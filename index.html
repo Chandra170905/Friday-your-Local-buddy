@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="game.css">
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+        background-color: #050e2d;
+    }
+
+    /* scroll Bar */
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #1aeeef;
+        border-radius: 6px;
+    }
+
+    header {
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        padding: 7px 80px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #1b2141;
+        transition: 0.5s;
+        z-index: 1000;
+    }
+
+    header.sticky {
+        background: #1b2141;
+        box-shadow: 0 5px 15px rgba(89, 67, 148, 0.9);
+    }
+
+    header .logo {
+        position: relative;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 2em;
+    }
+
+    header .nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    header ul li {
+        list-style: none;
+        margin: 10px;
+    }
+
+    header ul li a {
+        color: #fff;
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+    }
+
+    header ul li a:hover {
+        background-color: #1aeeef;
+        color: #050e2d;
+        box-shadow: 0 0 10px #1aeeef;
+    }
+
+    header .action .searchbx {
+        padding: 5px;
+        margin: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #fff;
+        border-radius: 5px;
+    }
+
+    header .action .searchbx i {
+        font-size: 1.4em;
+        margin: 5px;
+        color: #222;
+    }
+
+    header .action .searchbx input {
+        outline: none;
+        border: none;
+        font-size: 1em;
+        color: #222;
+    }
+
+    /* Home Banner */
+
+    .banner {
+        position: relative;
+        width: 100%;
+        min-height: 100vh;
+        padding: 0px 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .banner .bg {
+        position: relative;
+        width: 100%;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .banner .bg .content {
+        width: 50%;
+    }
+
+    .banner .bg .content h2 {
+        font-size: 4em;
+        color: #fff;
+        letter-spacing: 1px;
+    }
+
+    .banner .bg .content p {
+        font-size: 1em;
+        color: #dbd9d9;
+        letter-spacing: 1px;
+    }
+
+    .banner .bg .content a {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 20px 0;
+        border: 1px solid #1aeeef;
+        text-decoration: none;
+        font-weight: 700;
+        border-radius: 5px;
+        color: #fff;
+        letter-spacing: 1px;
+    }
+
+    .banner .bg .content a:hover {
+        background: #1aeeef;
+        color: #050e2d;
+        box-shadow: 0 0 10px #1aeeef;
+    }
+
+    /* about */
+
+    .about {
+        position: relative;
+        width: 100%;
+        min-height: 75vh;
+        padding: 0px 100px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .about .contentbx {
+        width: 50%;
+        margin: 20px;
+    }
+
+    .about .contentbx h2 {
+        font-size: 3em;
+        font-weight: 700;
+        color: #fff;
+    }
+
+    .about .contentbx p {
+        max-width: 600px;
+        text-align: justify;
+        color: #dbd9d9;
+
+    }
+
+    .about .contentbx a {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 20px 0;
+        border: 1px solid #1aeeef;
+        text-decoration: none;
+        font-weight: 700;
+        border-radius: 5px;
+        color: #fff;
+        letter-spacing: 1px;
+    }
+
+    .about .contentbx a:hover {
+        background: #1aeeef;
+        color: #050e2d;
+        box-shadow: 0 0 10px #1aeeef;
+    }
+
+    .about img {
+        height: 420px;
+        position: relative;
+        right: 2%;
+    }
+
+    /* Games */
+
+    .games {
+        padding: 0px 100px;
+        width: 100%;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 40px auto;
+    }
+
+    .games h2 {
+        color: #fff;
+        margin: 10px 0;
+    }
+
+    .games ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+    }
+
+    .games ul li {
+        list-style: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        margin: 5px;
+        letter-spacing: 1px;
+        cursor: pointer;
+        color: #fff;
+    }
+
+    .games ul li.active {
+        background: #1aeeef;
+        color: #050e2d;
+        box-shadow: 0 0 10px #1aeeef;
+    }
+
+    .games .cardbx {
+        width: 100%;
+        min-height: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .games .cardbx .card {
+        width: 280px;
+        border-radius: 10px;
+        margin: 20px 40px;
+        background: #1b2141;
+        overflow: hidden;
+    }
+
+    .games .cardbx .card img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+    }
+
+    .games .cardbx .card .content {
+        padding: 10px;
+    }
+
+    .games .cardbx .card .content h4 {
+        color: #fff;
+        margin: 15px 0;
+    }
+
+    .games .cardbx .card .progress-line {
+        position: relative;
+        height: 10px;
+        width: 100%;
+        background: #35407e;
+        margin-bottom: 15px;
+        border-radius: 10px;
+        transform: scaleX(0);
+        transform-origin: left;
+        animation: animate 1s cubic-bezier(1, 0, 0.5, 1) forwards;
+    }
+
+    .games .cardbx .card .progress-line span {
+        position: absolute;
+        height: 100%;
+        width: 80%;
+        border-radius: 10px;
+        background: #1aeeef;
+        box-shadow: 0 0 10px #1aeeef;
+        transform: scaleX(1);
+        transform-origin: left;
+        animation: animate 1s cubic-bezier(1, 0, 0.5, 1) forwards;
+    }
+
+    @keyframes animate {
+        100% {
+            transform: scaleX(1);
+        }
+    }
+
+    .games .cardbx .card .info {
+        border-top: 2px solid #35407e;
+        padding: 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .games .cardbx .card .info p {
+        font-size: 1em;
+        color: #fff;
+
+    }
+
+    .games .cardbx .card .info p span {
+        color: #1aeeef;
+    }
+
+    .games .cardbx .card .info a {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 20px 0;
+        border: 1px solid #1aeeef;
+        text-decoration: none;
+        font-weight: 700;
+        border-radius: 5px;
+        color: #fff;
+        letter-spacing: 1px;
+    }
+
+    .games .cardbx .card .info a:hover {
+        background: #1aeeef;
+        color: #050e2d;
+        box-shadow: 0 0 10px #1aeeef;
+    }
+
+    .games .cardbx .card.hide {
+        display: none;
+    }
+
+    @keyframes bounce {
+
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-20px);
+        }
+    }
+
+    .bounce {
+        animation: bounce 2s infinite ease-in-out;
+    }
+
+    .card.highlight {
+        box-shadow: 0 0 20px 5px #1aeeef;
+        transition: box-shadow 0.5s ease-in-out;
+    }
+
+    #suggestionList {
+        list-style: none;
+        background: #fff;
+        color: #000;
+        position: absolute;
+        z-index: 1001;
+        top: 50px;
+        max-height: 150px;
+        overflow-y: auto;
+        display: none;
+        padding: 0;
+        margin: 10px;
+        width: 200px;
+        border-radius: 5px;
+    }
+
+    #suggestionList:hover {
+        background-color: rgba(220, 220, 220, 0.813);
+    }
+
+    .heart {
+        font-size: 1.5em;
+        color: #ffffff;
+        cursor: pointer;
+    }
+
+
+</style>
+
+<body>
+    <header>
+        <a href="#" class="logo">Friday</a>
+        <ul class="nav">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="product.php">Products</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact_us.php">Contacts</a></li>
+            <li><a href="register.php">Register/login</a></li>
+        </ul>
+        <div class="action">
+            <div class="searchbx">
+                <i class="bx bx-search"></i>
+                <input type="text" id="productSearch" placeholder="Search here...">
+            </div>
+            <ul id="suggestionList">
+            </ul>
+            <div id="noMatchMsg" style="color: #fff; margin-top: 5px; display: none;">No match found</div>
+        </div>
+        <div class="togglemenu">
+
+        </div>
+    </header>
+
+    <!-- Home Banner -->
+
+    <div class="banner">
+        <div class="bg">
+            <div class="content">
+                <h2>Your Friendly Neighborhood Vendor!</h2>
+                <p>Looking for quality products, honest prices, and a smile with every purchase?
+                    You've come to the right place.
+                    Support local. Shop with Friday.</p>
+                <br>
+                <a href="products.html" class="btn">Shop Now</a>
+            </div>
+            <img src="vendor.asp-FINAL-1-82f93bfbb1a948c7ab7961c8f26703d2-removebg-preview.png" alt="" class="bounce"
+                height="650px">
+        </div>
+    </div>
+
+    <!-- About -->
+
+    <div class="about">
+        <div class="contentbx">
+            <h2>What we offer</h2>
+            <p>At Your Local Buddy, we're all about bringing the local market right to your fingertips. Whether you're
+                looking for fresh groceries, quality stationery, sports gear, or beauty essentials, we connect you with
+                nearby vendors you can trust. Our platform makes it super easy for you to explore, compare, and shop —
+                all from the comfort of your home. For vendors, it's a hassle-free way to showcase products with images,
+                descriptions, and prices, helping them grow their business online without needing any technical skills.
+                We believe in supporting local, creating a friendly digital space where communities thrive together.
+                With a secure login system and a smooth shopping experience, Your Local Buddy is your go-to destination
+                for smart, local shopping.
+            </p>
+        </div>
+        <img src="steptodown.com149710-removebg-preview.png" alt="">
+    </div>
+
+    <div class="games" id="">
+        <h2>Popular Products</h2>
+        <ul>
+            <li class="list active" data-filter="all">All</li>
+            <li class="list" data-filter="cos">Cosmetics</li>
+            <li class="list" data-filter="fru">Fruits</li>
+            <li class="list" data-filter="spr">Sports</li>
+            <li class="list" data-filter="boo">Books</li>
+
+        </ul>
+        <div class="cardbx">
+            <div class="card" data-item="cos">
+                <img src="minimalist.webp" alt="">
+                <div class="content">
+                    <h4>Minimalist Vitamin B5 10% Moisturizer</h4>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>&#8377 349</span></p>
+                        <a href="#">Shop Now</a>
+                        <i class='heart bx bx-heart' title="Add to Cart"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="fru">
+                <img src="fruit.jpg" alt="">
+                <div class="content">
+                    <h4>Dragon Fruit</h4>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>&#8377 200</span></p>
+                        <a href="#">Shop now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="cos">
+                <img src="Hers-Skin-PDP-HydrobounceMoisturizer-ATF-1-M.webp" alt="">
+                <div class="content">
+                    <h4>Hydrobounce Moisturizer</h4>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>&#8377 1035</span></p>
+                        <a href="#">Shop now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="spr">
+                <img src="sport1.jpg" alt="">
+                <div class="content">
+                    <h4>Adidas Tiro League Thermally Bonded Football</h4>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>&#8377 2999</span></p>
+                        <a href="#">Shop now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="fru">
+                <img src="fruit2.jpg" alt="">
+                <div class="content">
+                    <h4>Strawberries</h4>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>&#8377 249</span></p>
+                        <a href="#">Shop now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="spr">
+                <img src="sport2.jpg" alt="">
+                <div class="content">
+                    <h4>Wilson NBA Forge Basketball</h4>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>&#8377 5529</span></p>
+                        <a href="#">Shop now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="boo">
+                <img src="book1.jpg" alt="">
+                <div class="content">
+                    <h4>All System Red</h4>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>&#8377 3800</span></p>
+                        <a href="#">Shop now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="boo">
+                <img src="book2.jpg" alt="">
+                <div class="content">
+                    <h4>Stephen King</h4>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>&#8377 10,715</span></p>
+                        <a href="#">Shop now</a>
+                    </div>
+                </div>
+            </div>2
+            <div class="card" data-item="cos">
+                <img src="plumserum.webp" alt="">
+                <div class="content">
+                    <h4>Plum Mandarin & Serum</h4>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>&#8377 687</span></p>
+                        <a href="#">Shop now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* Sticky navbar */
+        window.addEventListener('scroll', function () {
+            var header = document.querySelector('header');
+            header.classList.toggle('sticky', window.scrollY > 0);
+        });
+
+        /* Filterable Cards */
+        let list = document.querySelectorAll('.list');
+        let card = document.querySelectorAll('.card');
+
+        for (let i = 0; i < list.length; i++) {
+            list[i].addEventListener('click', function () {
+                for (let j = 0; j < list.length; j++) {
+                    list[j].classList.remove('active');
+                }
+                this.classList.add('active');
+
+                let dataFilter = this.getAttribute('data-filter');
+
+                for (let k = 0; k < card.length; k++) {
+                    card[k].classList.remove('active');
+                    card[k].classList.add('hide');
+                    if (card[k].getAttribute('data-item') == dataFilter || dataFilter == 'all') {
+                        card[k].classList.remove('hide');
+                        card[k].classList.add('active');
+                    }
+                }
+            })
+        }
+
+        // --- Product Search Functionality ---
+        const searchInput = document.getElementById('productSearch');
+        const suggestionList = document.getElementById('suggestionList');
+        const noMatchMsg = document.getElementById('noMatchMsg');
+        const productCards = document.querySelectorAll('.card');
+
+        const getProductNames = () => {
+            return [...productCards].map(card => ({
+                name: card.querySelector('.content h4').textContent.trim(),
+                element: card
+            }));
+        };
+
+        const scrollToProduct = (name) => {
+            let found = false;
+            getProductNames().forEach(({ name: productName, element }) => {
+                if (productName.toLowerCase().includes(name.toLowerCase())) {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    element.classList.add('highlight');
+                    setTimeout(() => element.classList.remove('highlight'), 2000);
+                    found = true;
+                }
+            });
+            noMatchMsg.style.display = found ? 'none' : 'block';
+        };
+
+        const showSuggestions = (input) => {
+            const val = input.toLowerCase();
+            const matches = getProductNames().filter(({ name }) =>
+                name.toLowerCase().includes(val)
+            );
+
+            suggestionList.innerHTML = '';
+            if (matches.length > 0 && val !== '') {
+                suggestionList.style.display = 'block';
+                noMatchMsg.style.display = 'none';
+                matches.forEach(({ name }) => {
+                    const li = document.createElement('li');
+                    li.textContent = name;
+                    li.style.padding = '5px 10px';
+                    li.style.cursor = 'pointer';
+                    li.addEventListener('click', () => {
+                        searchInput.value = name;
+                        suggestionList.style.display = 'none';
+                        scrollToProduct(name);
+                    });
+                    suggestionList.appendChild(li);
+                });
+            } else {
+                suggestionList.style.display = 'none';
+                if (val !== '') noMatchMsg.style.display = 'block';
+                else noMatchMsg.style.display = 'none';
+            }
+        };
+
+        searchInput.addEventListener('input', () => {
+            showSuggestions(searchInput.value);
+        });
+
+        searchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                scrollToProduct(searchInput.value);
+                suggestionList.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+
+</html>
